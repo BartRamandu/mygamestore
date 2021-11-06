@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 /**
  * 
  * @author Pedro
- * @version 1.0
+ * @version 1.1
  *
  */
 
@@ -25,7 +25,7 @@ public class ProdutoModel {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 
 	@NotBlank
 	@Size(min = 2, max = 100)
@@ -47,11 +47,12 @@ public class ProdutoModel {
 	@JsonIgnoreProperties("produtos")
 	private CategoriaModel categoriaDoProduto;
 
-	public int getId() {
+
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
