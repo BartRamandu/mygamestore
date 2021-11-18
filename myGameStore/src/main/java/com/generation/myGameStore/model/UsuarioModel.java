@@ -5,14 +5,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import io.swagger.annotations.ApiModelProperty;
 
 
 /**
  * 
  * @author marianatheml
- * @version 1.0
+ * @version 1.1
  *
  */
 
@@ -24,16 +27,18 @@ public class UsuarioModel {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank
+	@NotBlank(message = "O nome é obrigatório!")
 	@Size(min = 2, max = 100)
 	private String nome;
 	
-	@NotBlank
+	@ApiModelProperty (example = "email@email.com.br")
+	@NotBlank(message = "O usuário é obrigatório!")
+	@Email(message = "O usuário deve ser um e-mail válido!")
 	@Size(min = 2, max = 100)
 	private String usuario;
 	
-	@NotBlank
-	@Size(min = 6, max = 100)
+	@NotBlank(message = "A senha é obrigatória!")
+	@Size(min = 6, max = 100, message = "O atributo senha deve ter no mínimo 6 caracteres!")
 	private String senha;
 	
 	public Long getId() {
